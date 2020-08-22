@@ -1,0 +1,26 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Intelligent Textures"
+    DESC = "Replaces almost all textures in the vanilla game and its expansions with high resolution AI upscales."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/47469"
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+    RDEPEND = "base/morrowind[bloodmoon,tribunal]"
+    SRC_URI = """
+      Intelligent_Textures-47469-2-1-1588592170.7z
+      Wood_Fix-47469-2-1b-1588600554.7z
+    """
+    NEXUS_URL = "https://www.nexusmods.com/morrowind/mods/47469"
+
+    # List of directories that portmod will install. The first parameter is the location
+    # relative to the root of the source file, and S can be omitted if there is
+    # only one source defined in the pybuild.
+    INSTALL_DIRS = [
+        # main mod
+        InstallDir("00 Core", S="Intelligent_Textures-47469-2-1-1588592170"),
+        InstallDir("01 Atlas Textures", S="Intelligent_Textures-47469-2-1-1588592170"),
+        # upstream patch
+        InstallDir(".", S="Wood_Fix-47469-2-1b-1588600554"),
+    ]
