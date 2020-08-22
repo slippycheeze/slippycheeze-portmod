@@ -1,0 +1,32 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Red Vos"
+    DESC = "Gives the farming village of Vos a unique, reddish texture to complement the region."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44729"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    IUSE = "gitd"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+        gitd? ( arch-misc/glow-in-the-dahrk )
+    """
+    SRC_URI = """
+        Red_Vos-44729-1-2.7z
+    """
+
+    INSTALL_DIRS = [
+        InstallDir(
+            "0-Data Files",
+            S="Red_Vos-44729-1-2",
+            PLUGINS=[File("Red Vos.ESP")],
+        ),
+        InstallDir(
+            "1-Glow in the Dahrk Patch",
+            REQUIRED_USE="gitd",
+        ),
+    ]
