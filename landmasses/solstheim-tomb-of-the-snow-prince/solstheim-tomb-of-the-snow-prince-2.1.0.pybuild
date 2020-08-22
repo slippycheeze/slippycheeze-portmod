@@ -1,0 +1,44 @@
+# -*- mode: python; -*-
+
+from pybuild import Pybuild1, InstallDir, File
+from pybuild.modinfo import M
+
+
+class Mod(Pybuild1):
+    NAME = "Solstheim - Tomb of the Snow Prince"
+    DESC = """ToTSP is part of the “Heart of the Velothi” (HotV) modular
+    worldspace remake series. HoTV’s primary goal is to overhaul the
+    quality and design of the vanilla-game areas to be at a level that
+    is consistent with the worldspaces of Tamriel Rebuilt and Project Tamriel."""
+    HOMEPAGE = "https://ellisnz.github.io/Tomb-of-The-Snow-Prince/"
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+    RDEPEND = "base/morrowind[bloodmoon,tribunal]"
+    SRC_URI = "https://github.com/EllisNZ/Tomb-of-The-Snow-Prince/releases/download/P1-2.1.0/Solstheim_Tomb_of_the_Snow_Prince.7z"
+
+    # List of directories that portmod will install. The first parameter is the location
+    # relative to the root of the source file, and S can be omitted if there is
+    # only one source defined in the pybuild.
+    INSTALL_DIRS = [
+        InstallDir("00 Core"),
+        InstallDir(
+            "010 Solstheim - Tomb of the Snow Prince",
+            PLUGINS=[
+                File("VSW_Tomb_of_the_Snow_Prince.esm"),
+                File("VSW_Solstheim_TD_Item_Expansion.esp"),
+            ],
+        ),
+        # 2020-08-22: REVISIT: MOMW list this for install, but not
+        # loading anything; the PfP patch is also reported outdated.
+        InstallDir("011 TOTSP Patches"),
+        InstallDir(
+            "012 Armor of the Snow Prince Redux",
+            PLUGINS=[File("Snow Prince Armor Redux.ESP")],
+        ),
+        InstallDir(
+            "013 Missing Snow Armor Pieces",
+            PLUGINS=[File("Missing snow armor.esp")],
+        ),
+        InstallDir("014 Fierce Wolf Helms"),
+        InstallDir("015 Hide-Like Animal Pelts"),
+    ]
