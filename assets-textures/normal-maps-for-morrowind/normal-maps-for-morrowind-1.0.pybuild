@@ -1,0 +1,14 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Normal Maps for Morrowind"
+    DESC = "Vanilla-friendly normal maps for Morrowind."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/45336"
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+    RDEPEND = "base/morrowind[bloodmoon,tribunal]"
+    NEXUS_URL = "https://www.nexusmods.com/morrowind/mods/45336"
+    SRC_URI = "All_in_one-45336-1-0.7z"
+
+    INSTALL_DIRS = [InstallDir(".")]
