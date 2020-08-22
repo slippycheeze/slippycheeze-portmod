@@ -1,0 +1,37 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Dark Molag Mar"
+    DESC = "Retexture of molag mar."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/32101"
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    IUSE = "gitd"
+
+    RDEPEND = "base/morrowind[bloodmoon,tribunal]"
+    NEXUS_URL = HOMEPAGE
+    SRC_URI = """
+        main-32101.7z
+        gitd? ( Glow_in_the_Dahrk-45886-2-9-1-1596488824.7z )
+    """
+
+
+    # need to include a patch from this.
+    DEPEND = "gitd? ( arch-misc/glow-in-the-dahrk )"
+    RDEPEND = DEPEND
+
+    INSTALL_DIRS = [
+        InstallDir(
+            "Dark Molag Mar",
+            S="main-32101",
+            PLUGINS=[File("Clean dark molag mar.ESP")],
+            BLACKLIST=["screenshots"],
+        ),
+        InstallDir(
+            "08 Dark Molag Mar Patch",
+            S="Glow_in_the_Dahrk-45886-2-9-1-1596488824",
+            REQUIRED_USE="gitd",
+        ),
+    ]
