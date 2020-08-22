@@ -1,0 +1,24 @@
+# -*- mode: python; -*-
+
+# imports the basic Pybuild1 class. All mods should implement this class.
+from pybuild import Pybuild1, InstallDir, File
+
+# Special import that creates values based on the current file
+# M refers to the mod's name and version. E.g. foo-example-1.0
+from pybuild.modinfo import M
+
+
+class Mod(Pybuild1):
+    NAME = "Dubdilla Location Fix"
+    DESC = "Fix quest dungeon location to match voice and journal"
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/46720"
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+    RDEPEND = "base/morrowind[bloodmoon,tribunal]"
+    SRC_URI = "Dubdilla_Location_Fix-46720-1-0-1582463235.7z"
+    NEXUS_URL = "https://www.nexusmods.com/morrowind/mods/46720"
+
+    # List of directories that portmod will install. The first parameter is the location
+    # relative to the root of the source file, and S can be omitted if there is
+    # only one source defined in the pybuild.
+    INSTALL_DIRS = [InstallDir(".", PLUGINS=[File("Dubdilla Location Fix.esp")])]
