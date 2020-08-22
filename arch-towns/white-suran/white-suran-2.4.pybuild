@@ -1,0 +1,35 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "White Suran"
+    DESC = "Gives Suran a unique, pearly white texture to distinguish it from other Hlaalu settlements."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44153"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    IUSE = "gitd"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+        gitd? ( arch-misc/glow-in-the-dahrk )
+    """
+    SRC_URI = "White_Suran_2_-_MD_Edition-44153-2-4-1577556248.7z"
+
+
+    INSTALL_DIRS = [
+        InstallDir(
+            "0-Data Files",
+            PLUGINS=[File("WhiteSuran2_MD_Edition.esp")],
+        ),
+        InstallDir(
+            "1-Glow in the Dahrk Patch",
+            REQUIRED_USE="gitd",
+        ),
+        InstallDir(
+            "1-White Suran Ground Textures",
+            PLUGINS=[File("White Suran Ground Textures.esp")],
+        ),
+        InstallDir("2-Arkitektora White Suran Patch"),
+    ]
