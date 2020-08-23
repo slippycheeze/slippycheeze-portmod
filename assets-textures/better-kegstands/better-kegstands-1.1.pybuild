@@ -1,0 +1,20 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Better Kegstands"
+    DESC = "This is a plugin-less replacer for the 2 kegstand models."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/37708"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Better_Kegstands_1_1-37708-1-1.7z
+    """
+
+    INSTALL_DIRS = [InstallDir(".")]
