@@ -1,0 +1,36 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+from pyclass.nexus import NexusMod
+from pyclass.fix_maps import FixMaps
+from pyclass.maps import OptMaps
+
+class Mod(OptMaps, FixMaps, NexusMod, Pybuild1):
+    NAME = "Improved Kwama Eggs and Egg Sacs"
+    DESC = "A mesh and texture replacer for the kwama eggs and egg sacs with optional pulsing animation and bump maps."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44355"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Kwama_Egg_sacs_and_Eggs_Replacer-43555-1-1.7z
+    """
+
+    IUSE = "map_normal +graphic-herbalism"
+    NORMAL_MAP_PATTERN = '_nm'
+
+    INSTALL_DIRS = [
+        InstallDir("00-Data Files", BLACKLIST=["meshes"]),
+        InstallDir("00-Data Files", WHITELIST=["meshes"], REQUIRED_USE="!graphic-herbalism"),
+        InstallDir("01-bump-maps", BLACKLIST=["meshes"], REQUIRED_USE="map_normal"),
+        InstallDir("01-bump-maps", WHITELIST=["meshes"], REQUIRED_USE="map_normal !graphic-herbalism"),
+        InstallDir("03-Pulsing Animation", BLACKLIST=["meshes"], REQUIRED_USE="!map_normal"),
+        InstallDir("03-Pulsing Animation", WHITELIST=["meshes"], REQUIRED_USE="!map_normal !graphic-herbalism"),
+        InstallDir("03-Pulsing Animation Bump-mapped", BLACKLIST=["meshes"], REQUIRED_USE="map_normal"),
+        InstallDir("03-Pulsing Animation Bump-mapped", WHITELIST=["meshes"], REQUIRED_USE="map_normal !graphic-herbalism"),
+        # the graphic-herbalism patch/mesh deliberately omitted regardless
+    ]
