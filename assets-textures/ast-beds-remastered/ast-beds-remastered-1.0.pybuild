@@ -1,0 +1,25 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "AST Beds Remastered"
+    DESC = "Retexture beds."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/45206"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        AST_beds_remastered-45206-1-0.7z
+    """
+
+    INSTALL_DIRS = [
+        InstallDir(
+            "AST beds remastered",
+            WHITELIST=["Textures"],
+        ),
+    ]
