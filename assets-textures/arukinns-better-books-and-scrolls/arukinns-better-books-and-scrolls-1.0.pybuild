@@ -1,0 +1,20 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Arukinn's Better Books and Scrolls"
+    DESC = "This mod replace all the bookcovers, bookpages and scrolls."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/43100"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Arukinns_Better_Books_and_Scrolls-43100-1-0.7z
+    """
+
+    INSTALL_DIRS = [InstallDir(".")]
