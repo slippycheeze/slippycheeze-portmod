@@ -1,0 +1,20 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+
+class Mod(Pybuild1):
+    NAME = "Lysol's Guar Skin Banners Normal Mapped"
+    DESC = "This texture pack replaces almost all the guar skin banners thrughout Vvardenfell."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44355"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Lysol's_Guar_Skin_Banners_Normal_Mapped_1.0_for_OpenMW-44355-1-0.7z
+    """
+
+    INSTALL_DIRS = [InstallDir(".")]
