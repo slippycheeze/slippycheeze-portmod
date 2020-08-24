@@ -1,0 +1,21 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+from pyclass.nexus import NexusMod
+
+class Mod(NexusMod, Pybuild1):
+    NAME = "Apel's Various Things - Signs"
+    DESC = "Texture and mesh replacer for tavern sign."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/42576"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Apel_Tavern_Sign_Retexture_V1-42576-1-0.rar
+    """
+
+    INSTALL_DIRS = [InstallDir(".")]
