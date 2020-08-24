@@ -1,0 +1,21 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+from pyclass.nexus import NexusMod
+
+class Mod(NexusMod, Pybuild1):
+    NAME = "Long Live the Plates"
+    DESC = "1024px Retexture of the 8 standard plates of Morrowind. Vanilla-friendly."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/43935"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Long_Live_The_Plates_-_Retexture-43935-1-0.7z
+    """
+
+    INSTALL_DIRS = [InstallDir("Long Live The Plates/Data Files", WHITELIST=["Textures"])]
