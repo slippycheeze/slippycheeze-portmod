@@ -1,0 +1,21 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+from pyclass.nexus import NexusMod
+
+class Mod(NexusMod, Pybuild1):
+    NAME = "Long Live the Limeware"
+    DESC = "HD Retexture for the Limeware of Morrowind. Vanilla-friendly."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44045"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Long_Live_The_Limeware_-_Retexture-44045-1-0.7z
+    """
+
+    INSTALL_DIRS = [InstallDir("Data Files", WHITELIST=["Textures"])]
