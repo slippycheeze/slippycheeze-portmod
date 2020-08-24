@@ -1,0 +1,21 @@
+# -*- mode: python; -*-
+from pybuild import Pybuild1, InstallDir, File
+from pyclass.nexus import NexusMod
+
+class Mod(NexusMod, Pybuild1):
+    NAME = "Long Live the Glassware"
+    DESC = "1024px Retexture of the glassware of Morrowind. Vanilla-friendly."
+    HOMEPAGE = "https://www.nexusmods.com/morrowind/mods/44016"
+    NEXUS_URL = HOMEPAGE
+    LICENSE = "all-rights-reserved"
+    KEYWORDS = "openmw"
+
+    RDEPEND = """
+        base/morrowind[bloodmoon,tribunal]
+    """
+
+    SRC_URI = """
+        Long_Live_The_Glassware_-_Retexture-44016-1-0.7z
+    """
+
+    INSTALL_DIRS = [InstallDir("Data Files", WHITELIST=["Textures"])]
